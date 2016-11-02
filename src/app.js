@@ -11,11 +11,11 @@ import 'angular-strap/dist/angular-strap.tpl';
 
 import 'lodash';
 
-import {player} from './player/player';
+import {book} from './book/book';
 
 angular.module('app', [
     'ui.router',
     'LocalForageModule',
     'mgcrea.ngStrap',
-    player.name,
+    book.name
 ]);

@@ -1,0 +1,16 @@
+<h1>Books</h1>
+<table class="table">
+    <tbody>
+    <tr ng-repeat="book in $ctrl.bookList">
+        <td>
+            <a href="" ui-sref="book.details(book.isbn)">
+                {{book.title}}
+            </a>
+        </td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+    </tr>
+    </tbody>
+</table>
