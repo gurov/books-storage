@@ -3,6 +3,7 @@ import angular from 'angular';
 import {bookListComponent} from './components/book-list-component';
 import {bookDetailsComponent} from './components/book-details-component';
 import {bookEditComponent} from './components/book-edit-component';
+import {bookAddComponent} from './components/book-add-component';
 import {IsbnService} from './../services/isbn-service';
 /**
  * @namespace book */
@@ -11,6 +12,7 @@ export const book = angular.module('book', ['ui.router'])
     .component('cBookList', bookListComponent)
     .component('cBookDetails', bookDetailsComponent)
     .component('cBookEdit', bookEditComponent)
+    .component('cBookAdd', bookAddComponent)
     .config(function ($stateProvider) {
         $stateProvider
             .state('book', {
@@ -27,5 +29,8 @@ export const book = angular.module('book', ['ui.router'])
             }).state('book.edit', {
                 url: '/edit/:isbn',
                 template: '<c-book-edit></c-book-edit>'
+            }).state('book.add', {
+                url: '/add',
+                template: '<c-book-add></c-book-add>'
             });
     });
