@@ -1,16 +1,20 @@
 export const defaultBookList = [
     {
-        title: 'adsfasdfa',
+        title: 'Harry Potter and the sorcerer\'s stone',
         authorData: [
             {
-                firstName: 'Ivan',
-                lastName: 'Petrov'
+                firstName: 'J. K.',
+                lastName: 'Rowling'
+            },
+            {
+                firstName: 'Mary',
+                lastName: 'Grandpre'
             }
         ],
-        pageCount: 123,
-        publicationYear: 1888,
-        releaseYear: 2001,
-        isbn: 'asdasdasd',
-        image: ''
+        pageCount: 309,
+        publicationYear: 1998,
+        releaseYear: 1997,
+        isbn: '9780590353427',
+        image: null
     }
 ];

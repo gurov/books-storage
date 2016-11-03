@@ -2,3 +2,11 @@
     font-size: 24px;
     font-weight: bold;
 }
+.width40 {
+    width: 40%;
+}
+
+.table-condensed.book-options > thead > tr > th,
+.table-condensed.book-options > tbody > tr > td {
+    padding-left: 0px;
+}

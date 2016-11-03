@@ -1,6 +1,6 @@
-import template from './book-details.html';
+import template from './book-edit.html';
 
-class BookDetailsController {
+class BookEditController {
     constructor(isbnService, $stateParams) {
         this.isbnService = isbnService;
         this.bookDetails = null;
@@ -14,14 +14,9 @@ class BookDetailsController {
         });
     }
 
-    authorsToString(authorData) {
-        return authorData.map((author) => {
-            return author.firstName + ' ' + author.lastName;
-        }).join(', ');
-    }
 }
 
-export const bookDetailsComponent = {
+export const bookEditComponent = {
     template,
-    controller: BookDetailsController
+    controller: BookEditController
 };

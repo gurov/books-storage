@@ -1,5 +1,4 @@
 import template from './book-list.html';
-import {defaultBookList} from '../../data/default-book-list';
 
 class BookListController {
     constructor(isbnService) {
@@ -12,9 +11,8 @@ class BookListController {
         return this.isbnService.get().then((response) => {
             this.bookList = response;
             console.log(response);
-            console.log(defaultBookList);
             if (!response) {
-                this.bookList = defaultBookList;
+                this.isbnService.setDefault();
             }
         });
     }
