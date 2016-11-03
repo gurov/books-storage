@@ -4,6 +4,7 @@ import {bookListComponent} from './components/book-list-component';
 import {bookDetailsComponent} from './components/book-details-component';
 import {bookEditComponent} from './components/book-edit-component';
 import {bookAddComponent} from './components/book-add-component';
+import {bookFormComponent} from './components/book-form-component';
 import {IsbnService} from './../services/isbn-service';
 /**
  * @namespace book */
@@ -13,6 +14,7 @@ export const book = angular.module('book', ['ui.router'])
     .component('cBookDetails', bookDetailsComponent)
     .component('cBookEdit', bookEditComponent)
     .component('cBookAdd', bookAddComponent)
+    .component('cBookForm', bookFormComponent)
     .config(function ($stateProvider) {
         $stateProvider
             .state('book', {

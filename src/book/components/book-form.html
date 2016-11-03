@@ -1,0 +1,109 @@
+<form class="form-horizontal">
+    <div class="form-group">
+        <label class="col-md-3 control-label">ISBN</label>
+        <div class="col-md-4">
+            <input type="text"
+                   ng-model="$ctrl.bookData.isbn"
+                   class="form-control">
+        </div>
+        <div class="col-md-5">
+            <div class="form-control-static text-muted">
+                Try load data from <strong>isbndb.com</strong>: <button class="btn btn-default btn-xs">load</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Title *</label>
+        <div class="col-md-9">
+            <input type="text"
+                   ng-model="$ctrl.bookData.title"
+                   required
+                   ng-maxlength="30"
+                   class="form-control">
+            <div class="help-block">max 30 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Authors *</label>
+        <div ng-repeat="author in $ctrl.bookData.authorData">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-addon">First name</div>
+                    <input type="text"
+                           required
+                           ng-model="author.firstName"
+                           class="form-control">
+                </div>
+                <div class="help-block">max: 20 characters</div>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-addon">Last name</div>
+                    <input type="text"
+                           ng-model="author.lastName"
+                           required
+                           class="form-control">
+                </div>
+                <div class="help-block">max: 20 characters</div>
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-default btn-block" title="Add author">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Number of pages *</label>
+        <div class="col-md-2">
+            <input type="number"
+                   required
+                   ng-model="$ctrl.bookData.pageCount"
+                   ng-min="1"
+                   ng-max="10001"
+                   class="form-control">
+        </div>
+        <div class="col-md-7">
+            <div class="form-control-static text-muted">1-10000 characters</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Publication year</label>
+        <div class="col-md-2">
+            <input type="number"
+                   ng-model="$ctrl.bookData.publicationYear"
+                   ng-min="1800"
+                   class="form-control">
+        </div>
+        <div class="col-md-7">
+            <div class="form-control-static text-muted">after in 1800</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-3 control-label">Release date</label>
+        <div class="col-md-2">
+            <datepicker date-format="yyyy-MM-dd">
+                <input ng-model="$ctrl.bookData.releaseDate"
+                       class="form-control"
+                       type="text"/>
+            </datepicker>
+        </div>
+        <div class="col-md-7">
+            <div class="form-control-static text-muted">after in 01.01.1800</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-3 control-label">Image</label>
+        <div class="col-md-9">
+            <media-preview model="$ctrl.bookData.image"></media-preview>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-3 col-md-9">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>
+<pre>{{$ctrl.bookData|json}}</pre>

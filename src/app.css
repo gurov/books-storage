@@ -6,7 +6,57 @@
     width: 40%;
 }
 
+.container {
+    max-width: 960px;
+}
+
 .table-condensed.book-options > thead > tr > th,
 .table-condensed.book-options > tbody > tr > td {
-    padding-left: 0px;
+    padding-left: 0;
+}
+
+input.ng-dirty.ng-invalid {
+    border: 1px solid red;
+    box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(255, 175, 233, 0.6);
+}
+
+.img-thumbnail {
+    width: 40%;
+    margin: 5%;
+    background-image: none;
+}
+
+.media-preview {
+    width: 50%;
+    height: auto;
+}
+
+.media-container {
+    text-align: left;
+}
+
+.custom-preview {
+    width: 100%;
+    border: 2px solid #E6E6E6;
+    background-color: #F5F5F5;
+    min-height: 50px;
+}
+
+.media-preview {
+    background-color: #eee;
+    padding: 10px;
+    color: black;
+}
+
+.media-preview input[type="file"] {
+    padding: 0;
+    margin: 0;
+}
+
+.media-preview input[type="button"] {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    background-color: transparent;
 }
