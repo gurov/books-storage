@@ -3,7 +3,7 @@
         <label class="col-md-3 control-label">ISBN</label>
         <div class="col-md-4">
             <input type="text"
-                   ng-model="$ctrl.bookData.isbn"
+                   ng-model="$ctrl.bookDetails.isbn"
                    class="form-control">
         </div>
         <div class="col-md-5">
@@ -17,7 +17,7 @@
         <label class="col-md-3 control-label">Title *</label>
         <div class="col-md-9">
             <input type="text"
-                   ng-model="$ctrl.bookData.title"
+                   ng-model="$ctrl.bookDetails.title"
                    required
                    ng-maxlength="30"
                    class="form-control">
@@ -26,32 +26,51 @@
     </div>
     <div class="form-group">
         <label class="col-md-3 control-label">Authors *</label>
-        <div ng-repeat="author in $ctrl.bookData.authorData">
-            <div class="col-md-4">
-                <div class="input-group">
-                    <div class="input-group-addon">First name</div>
-                    <input type="text"
-                           required
-                           ng-model="author.firstName"
-                           class="form-control">
-                </div>
-                <div class="help-block">max: 20 characters</div>
-            </div>
-            <div class="col-md-4">
-                <div class="input-group">
-                    <div class="input-group-addon">Last name</div>
-                    <input type="text"
-                           ng-model="author.lastName"
-                           required
-                           class="form-control">
-                </div>
-                <div class="help-block">max: 20 characters</div>
-            </div>
-            <div class="col-md-1">
-                <button class="btn btn-default btn-block" title="Add author">
-                    <span class="glyphicon glyphicon-plus"></span>
-                </button>
-            </div>
+        <div class="col-md-9">
+            <table class="table table-condensed authors">
+                <thead>
+                <tr>
+                    <th>First name <small class="text-muted">(max 30 characters)</small></th>
+                    <th>Last name <small class="text-muted">(max 30 characters)</small></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="author in $ctrl.bookDetails.authorData">
+                    <td>
+                        <input type="text"
+                               required
+                               ng-maxlength="20"
+                               ng-model="author.firstName"
+                               class="form-control">
+                    </td>
+                    <td>
+                        <input type="text"
+                               ng-model="author.lastName"
+                               ng-maxlength="20"
+                               required
+                               class="form-control">
+                    </td>
+                    <td>
+                        <span class="glyphicon glyphicon-remove cursor-pointer"
+                              ng-if="$ctrl.bookDetails.authorData.length > 1"
+                              ng-click="$ctrl.removeRow($ctrl.bookDetails.authorData, $index)"
+                              title="Remove"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span
+                           class="glyphicon glyphicon-plus cursor-pointer"
+                           ng-click="$ctrl.addRow($ctrl.bookDetails.authorData)"
+                           title="Add author">
+                        </span>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="form-group">
@@ -59,7 +78,7 @@
         <div class="col-md-2">
             <input type="number"
                    required
-                   ng-model="$ctrl.bookData.pageCount"
+                   ng-model="$ctrl.bookDetails.pageCount"
                    ng-min="1"
                    ng-max="10001"
                    class="form-control">
@@ -72,7 +91,7 @@
         <label class="col-md-3 control-label">Publication year</label>
         <div class="col-md-2">
             <input type="number"
-                   ng-model="$ctrl.bookData.publicationYear"
+                   ng-model="$ctrl.bookDetails.publicationYear"
                    ng-min="1800"
                    class="form-control">
         </div>
@@ -84,7 +103,7 @@
         <label class="col-md-3 control-label">Release date</label>
         <div class="col-md-2">
             <datepicker date-format="yyyy-MM-dd">
-                <input ng-model="$ctrl.bookData.releaseDate"
+                <input ng-model="$ctrl.bookDetails.releaseDate"
                        class="form-control"
                        type="text"/>
             </datepicker>
@@ -97,7 +116,7 @@
     <div class="form-group">
         <label class="col-md-3 control-label">Image</label>
         <div class="col-md-9">
-            <media-preview model="$ctrl.bookData.image"></media-preview>
+            <media-preview model="$ctrl.bookDetails.image"></media-preview>
         </div>
     </div>
     <div class="form-group">
@@ -106,4 +125,4 @@
         </div>
     </div>
 </form>
-<pre>{{$ctrl.bookData|json}}</pre>
+<pre>{{$ctrl.bookDetails|json}}</pre>

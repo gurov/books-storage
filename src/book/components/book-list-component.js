@@ -10,10 +10,6 @@ class BookListController {
     update() {
         return this.isbnService.get().then((response) => {
             this.bookList = response;
-            console.log(response);
-            if (!response) {
-                this.isbnService.setDefault();
-            }
         });
     }
 }
