@@ -1,27 +1,67 @@
 <h1>Books</h1>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Title</th>
-        <th>ISBN</th>
-        <th>Year</th>
-        <th>Name</th>
-        <th>Pages</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="book in $ctrl.bookList">
-        <td>
-            <a href="" ui-sref="book.details({isbn:book.isbn})">
-                {{book.title}}
-            </a>
-        </td>
-        <td>
-            {{book.isbn}}
-        </td>
-        <td>{{book.publicationYear}}</td>
-        <td>{{book.authorData[0].firstName}} {{book.authorData[0].lastName}}</td>
-        <td>{{book.pageCount}}</td>
-    </tr>
-    </tbody>
-</table>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="input-group">
+                            <input type="text"
+                                   ng-model="search"
+                                   placeholder="Search ..."
+                                   class="form-control">
+                            <div class="input-group-btn">
+                                <button type="button"
+                                        class="btn btn-default dropdown-toggle"
+                                        data-toggle="dropdown"
+                                        bs-dropdown
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <span class="glyphicon glyphicon-filter"></span>
+                                    {{$ctrl.filter}}
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu" role="menu" ng-model="$ctrl.filter">
+                                    <li><a href="" ng-click="$ctrl.filter = 'title'">title</a></li>
+                                    <li><a href="" ng-click="$ctrl.filter = 'year'">year</a></li>
+                                </ul>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+                    </div>
+                    <div class="col-xs-4">
+                        <a class="btn btn-primary btn-block"
+                           href=""
+                           data-toggle="modal"
+                           data-target="#editModal">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="list-group">
+                <a class="list-group-item"
+                   href=""
+                   ng-repeat="book in $ctrl.bookList | filter:search"
+                   ng-click="$ctrl.activeBook = book">
+                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    <h4 class="list-group-item-heading">{{book.title}}</h4>
+                    <p class="list-group-item-text">
+                        by <strong>{{book.authorData[0].firstName}} {{book.authorData[0].lastName}}</strong>,
+                        {{book.publicationYear}}
+                    </p>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div class="well well-lg text-center" ng-if="!$ctrl.activeBook">
+            Please, select the book
+        </div>
+        <c-book-details
+                ng-if="$ctrl.activeBook"
+                details="$ctrl.activeBook"></c-book-details>
+        <hr>
+
+    </div>
+</div>

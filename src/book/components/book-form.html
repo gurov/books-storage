@@ -4,11 +4,15 @@
         <div class="col-md-4">
             <input type="text"
                    ng-model="$ctrl.bookDetails.isbn"
+                   ng-model-options="{debounce:300}"
+                   ng-class="{'ng-invalid':1}"
                    class="form-control">
         </div>
         <div class="col-md-5">
             <div class="form-control-static text-muted">
-                Try load data from <strong>isbndb.com</strong>: <button class="btn btn-default btn-xs">load</button>
+                Load data from <strong>isbndb.com</strong>:
+                <button class="btn btn-default btn-xs"
+                        ng-click="$ctrl.check($ctrl.bookDetails.isbn)">load</button>
             </div>
 
         </div>

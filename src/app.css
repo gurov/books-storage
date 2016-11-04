@@ -30,6 +30,10 @@
     cursor: pointer;
 }
 
+h3.details-header {
+   margin-top: 0;
+}
+
 input.ng-dirty.ng-invalid {
     border: 1px solid red;
     box-shadow: 0 1px 1px rgba(255, 0, 0, 0.075) inset, 0 0 8px rgba(255, 175, 233, 0.6);

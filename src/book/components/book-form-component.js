@@ -30,6 +30,14 @@ class BookFormController {
         authorData.splice(index, 1);
     }
 
+    check(isbnSource) {
+        console.log(ISBN);
+        console.log('9784873113685');
+        var isbn10a = ISBN.parse(isbnSource);
+        console.log(isbn10a.isIsbn10());
+        console.log(isbn10a.isIsbn13());
+    }
+
 }
 
 export const bookFormComponent = {

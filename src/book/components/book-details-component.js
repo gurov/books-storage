@@ -3,16 +3,17 @@ import template from './book-details.html';
 class BookDetailsController {
     constructor(isbnService, $stateParams) {
         this.isbnService = isbnService;
-        this.bookDetails = null;
+        this.bookDetails = this.details;
         this.isbn = $stateParams.isbn;
-        this.getBookDetails($stateParams.isbn);
+        //this.getBookDetails($stateParams.isbn);
     }
 
-    getBookDetails(isbn) {
-        return this.isbnService.get(isbn).then((response) => {
-            this.bookDetails = response[0];
-        });
-    }
+    //getBookDetails(isbn) {
+    //    return this.isbnService.get(isbn).then((response) => {
+    //        console.log(response);
+    //        this.bookDetails = response;
+    //    });
+    //}
 
     authorsToString(authorData) {
         return authorData.map((author) => {
@@ -23,5 +24,8 @@ class BookDetailsController {
 
 export const bookDetailsComponent = {
     template,
+    bindings: {
+        details: '='
+    },
     controller: BookDetailsController
 };

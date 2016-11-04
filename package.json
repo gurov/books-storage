@@ -14,6 +14,7 @@
     "angular-ui-router": "^0.2.18",
     "angularjs-datepicker": "^2.1.6",
     "bootstrap": "^3.3.7",
+    "isbn": "^0.4.0",
     "jquery": "^1.12.4",
     "lodash": "^3.10.1"
   },

@@ -1,22 +1,24 @@
 import {defaultBookList} from '../data/default-book-list';
+import ISBN from 'isbn';
 
 export class IsbnService {
-    constructor($localForage) {
+    constructor($localForage, $q) {
         this.localForage = $localForage;
+        this.q = $q;
     }
     get(isbn) {
         if (isbn) {
-            return this.localForage.getItem('bookList');
+            let deferred = this.q.defer();
+            this.localForage.getItem('bookList').then((response) => {
+                deferred.resolve(response.filter((b) => b.isbn === isbn)[0]);
+            });
+            return deferred.promise;
         } else {
             return this.localForage.getItem('bookList');
         }
-        //  return isbnId ?
-        //
-        //    this.localForage.getItem('bookListId');
     }
 
     setDefault() {
-        console.log(defaultBookList);
         return this.localForage.setItem('bookList', defaultBookList);
     }
 

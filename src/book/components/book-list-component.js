@@ -5,6 +5,8 @@ class BookListController {
         this.isbnService = isbnService;
         this.bookList = [];
         this.update();
+        this.filter = 'title'
+        this.activeBook = null;
     }
 
     update() {

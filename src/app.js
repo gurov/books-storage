@@ -11,7 +11,7 @@ import 'angular-strap';
 import 'angularjs-datepicker';
 import 'angular-strap/dist/angular-strap.tpl';
 import './../node_modules/angular-media-preview/dist/angular-media-preview.js';
-
+import 'isbn';
 import 'lodash';
 
 import {book} from './book/book';
