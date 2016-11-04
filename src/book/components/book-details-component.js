@@ -1,22 +1,11 @@
 import template from './book-details.html';
 
 class BookDetailsController {
-    constructor(isbnService, $stateParams) {
-        this.isbnService = isbnService;
-        this.bookDetails = this.details;
-        this.isbn = $stateParams.isbn;
-        //this.getBookDetails($stateParams.isbn);
+    constructor($scope) {
     }
 
-    //getBookDetails(isbn) {
-    //    return this.isbnService.get(isbn).then((response) => {
-    //        console.log(response);
-    //        this.bookDetails = response;
-    //    });
-    //}
-
-    authorsToString(authorData) {
-        return authorData.map((author) => {
+    authorsToString(authors) {
+        return authors.map((author) => {
             return author.firstName + ' ' + author.lastName;
         }).join(', ');
     }
@@ -25,7 +14,8 @@ class BookDetailsController {
 export const bookDetailsComponent = {
     template,
     bindings: {
-        details: '='
+        bookDetails: '=',
+        startEdit: '='
     },
     controller: BookDetailsController
 };

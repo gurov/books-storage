@@ -10,7 +10,7 @@ import 'angular-localforage';
 import 'angular-strap';
 import 'angularjs-datepicker';
 import 'angular-strap/dist/angular-strap.tpl';
-import './../node_modules/angular-media-preview/dist/angular-media-preview.js';
+import 'angular-img-cropper';
 import 'isbn';
 import 'lodash';
 
@@ -20,7 +20,7 @@ angular.module('app', [
     'ui.router',
     'LocalForageModule',
     'mgcrea.ngStrap',
-    'angular-media-preview',
+    'angular-img-cropper',
     '720kb.datepicker',
     book.name
 ]);

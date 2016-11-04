@@ -8,6 +8,7 @@
   "version": "0.0.1",
   "dependencies": {
     "angular": "~1.5.0",
+    "angular-img-cropper": "0.0.2",
     "angular-localforage": "^1.2.5",
     "angular-media-preview": "^0.1.1",
     "angular-strap": "^2.3.10",

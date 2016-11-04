@@ -5,14 +5,27 @@ class BookListController {
         this.isbnService = isbnService;
         this.bookList = [];
         this.update();
-        this.filter = 'title'
+        this.order = 'title';
         this.activeBook = null;
+        this.startEdit = false;
     }
 
     update() {
         return this.isbnService.get().then((response) => {
             this.bookList = response;
         });
+    }
+
+    setActiveBook(book) {
+        console.log(book);
+
+        //this.activeBook = book;
+        this.activeBook = null;
+        this.activeBook = book;
+    }
+
+    setDefaultBookList() {
+        return this.isbnService.setDefault();
     }
 }
 

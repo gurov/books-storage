@@ -1,10 +1,11 @@
 <div class="panel panel-default">
 
-    <div class="panel-heading clearfix">
+    <div class="panel-body  panel-grey clearfix">
         <h3 class="panel-title pull-left">
             Book details
         </h3>
-        <button class="btn btn-primary pull-right hidden-xs">
+        <button class="btn btn-primary pull-right"
+                ng-click="$ctrl.startEdit = true">
             <span class="glyphicon glyphicon-edit"></span>
             Edit
         </button>
@@ -27,14 +28,14 @@
                         <strong>{{$ctrl.bookDetails.title}}</strong>
                     </h3>
                     <h6>
-                        by <strong>{{$ctrl.authorsToString($ctrl.bookDetails.authorData)}}</strong>
+                        by <strong>{{$ctrl.authorsToString($ctrl.bookDetails.authors)}}</strong>
                     </h6>
 
                     <table class="table table-condensed book-options">
                         <thead>
                         <tr>
-                            <th>Options</th>
-                            <th class="width40"></th>
+                            <th class="width40">Options</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -43,16 +44,20 @@
                             <td>{{$ctrl.bookDetails.isbn}}</td>
                         </tr>
                         <tr>
+                            <td>Publisher name</td>
+                            <td>{{$ctrl.bookDetails.publisherName}}</td>
+                        </tr>
+                        <tr>
                             <td>Number of pages</td>
                             <td>{{$ctrl.bookDetails.pageCount}}</td>
                         </tr>
                         <tr>
                             <td>Publication year</td>
-                            <td>{{$ctrl.bookDetails.publicationYear}}</td>
+                            <td>{{$ctrl.bookDetails.year}}</td>
                         </tr>
                         <tr>
-                            <td>Release year</td>
-                            <td>{{$ctrl.bookDetails.releaseYear}}</td>
+                            <td>Print date</td>
+                            <td>{{$ctrl.bookDetails.printDate}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -61,11 +66,8 @@
             </div>
         </div>
     </div>
-
-    <div class="panel-footer">
-        footer
-    </div>
-
 </div>
+
+
 
 

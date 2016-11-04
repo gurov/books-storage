@@ -1,132 +1,139 @@
-<form class="form-horizontal">
-    <div class="form-group">
-        <label class="col-md-3 control-label">ISBN</label>
-        <div class="col-md-4">
-            <input type="text"
-                   ng-model="$ctrl.bookDetails.isbn"
-                   ng-model-options="{debounce:300}"
-                   ng-class="{'ng-invalid':1}"
-                   class="form-control">
-        </div>
-        <div class="col-md-5">
-            <div class="form-control-static text-muted">
-                Load data from <strong>isbndb.com</strong>:
-                <button class="btn btn-default btn-xs"
-                        ng-click="$ctrl.check($ctrl.bookDetails.isbn)">load</button>
+<form>
+    <div class="panel panel-default">
+        <div class="panel-body panel-grey">
+            <div class="row">
+                <div class="col-xs-6">
+                    Edit
+                </div>
+                <div class="col-xs-6 text-right">
+                    <a class="btn btn-default"
+                       ng-click="$ctrl.cancel()"
+                       href="">Cancel</a>
+                    <a class="btn btn-primary"
+                       href=""><span class="glyphicon glyphicon-save"></span> Save</a>
+                </div>
             </div>
-
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">Title *</label>
-        <div class="col-md-9">
-            <input type="text"
-                   ng-model="$ctrl.bookDetails.title"
-                   required
-                   ng-maxlength="30"
-                   class="form-control">
-            <div class="help-block">max 30 characters</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">Authors *</label>
-        <div class="col-md-9">
-            <table class="table table-condensed authors">
-                <thead>
-                <tr>
-                    <th>First name <small class="text-muted">(max 30 characters)</small></th>
-                    <th>Last name <small class="text-muted">(max 30 characters)</small></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="author in $ctrl.bookDetails.authorData">
-                    <td>
-                        <input type="text"
+        <div class="panel-body">
+            <div class="form-group">
+                <label>ISBN</label>
+                <input type="text"
+                       ng-model="$ctrl.bookDetails.isbn"
+                       ng-model-options="{debounce:300}"
+                       ng-class="{'ng-invalid':1}"
+                       class="form-control">
+                <div class="help-block">
+                    Load data from <strong>isbndb.com</strong>:
+                    <button class="btn btn-default btn-xs"
+                            ng-click="$ctrl.check($ctrl.bookDetails.isbn)">load</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Title *</label>
+                <input type="text"
+                       ng-model="$ctrl.bookDetails.title"
+                       required
+                       ng-maxlength="30"
+                       class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Authors *</label>
+                <table class="table table-condensed authors">
+                    <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="author in $ctrl.bookDetails.authors">
+                        <td>
+                            <input type="text"
+                                   required
+                                   ng-maxlength="20"
+                                   ng-model="author.firstName"
+                                   class="form-control">
+                        </td>
+                        <td>
+                            <input type="text"
+                                   ng-model="author.lastName"
+                                   ng-maxlength="20"
+                                   required
+                                   class="form-control">
+                        </td>
+                        <td>
+                            <span class="glyphicon glyphicon-remove cursor-pointer"
+                                  ng-if="$ctrl.bookDetails.authors.length > 1"
+                                  ng-click="$ctrl.removeRow($ctrl.bookDetails.authors, $index)"
+                                  title="Remove"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-default btn-xs"
+                                    ng-click="$ctrl.addRow($ctrl.bookDetails.authors)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                Add author
+                            </button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label>Number of pages *</label>
+                        <input type="number"
                                required
-                               ng-maxlength="20"
-                               ng-model="author.firstName"
+                               ng-model="$ctrl.bookDetails.pageCount"
+                               ng-min="1"
+                               ng-max="10001"
                                class="form-control">
-                    </td>
-                    <td>
-                        <input type="text"
-                               ng-model="author.lastName"
-                               ng-maxlength="20"
-                               required
+                    </div>
+                    <div class="form-group">
+                        <label>Publication year</label>
+                        <input type="number"
+                               ng-model="$ctrl.bookDetails.year"
+                               ng-min="1800"
                                class="form-control">
-                    </td>
-                    <td>
-                        <span class="glyphicon glyphicon-remove cursor-pointer"
-                              ng-if="$ctrl.bookDetails.authorData.length > 1"
-                              ng-click="$ctrl.removeRow($ctrl.bookDetails.authorData, $index)"
-                              title="Remove"></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span
-                           class="glyphicon glyphicon-plus cursor-pointer"
-                           ng-click="$ctrl.addRow($ctrl.bookDetails.authorData)"
-                           title="Add author">
-                        </span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">Number of pages *</label>
-        <div class="col-md-2">
-            <input type="number"
-                   required
-                   ng-model="$ctrl.bookDetails.pageCount"
-                   ng-min="1"
-                   ng-max="10001"
-                   class="form-control">
-        </div>
-        <div class="col-md-7">
-            <div class="form-control-static text-muted">1-10000 characters</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">Publication year</label>
-        <div class="col-md-2">
-            <input type="number"
-                   ng-model="$ctrl.bookDetails.publicationYear"
-                   ng-min="1800"
-                   class="form-control">
-        </div>
-        <div class="col-md-7">
-            <div class="form-control-static text-muted">after in 1800</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-3 control-label">Release date</label>
-        <div class="col-md-2">
-            <datepicker date-format="yyyy-MM-dd">
-                <input ng-model="$ctrl.bookDetails.releaseDate"
-                       class="form-control"
-                       type="text"/>
-            </datepicker>
-        </div>
-        <div class="col-md-7">
-            <div class="form-control-static text-muted">after in 01.01.1800</div>
-        </div>
-    </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Print date</label>
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input ng-model="$ctrl.bookDetails.printDate"
+                                   class="form-control"
+                                   type="text"/>
+                        </datepicker>
+                    </div>
+                </div>
+                <div class="col-xs-6"></div>
+            </div>
+            <div class="form-group">
+                <label>Image</label>
+                <input type="file" img-cropper-fileread image="$ctrl.cropper.sourceImage" />
+                <canvas image-cropper
+                        image="$ctrl.cropper.sourceImage"
+                        cropped-image="$ctrl.bookDetails.image"
+                        crop-width="70"
+                        crop-height="100"
+                        keep-aspect="true"
+                        touch-radius="30"></canvas>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div ng-show="$ctrl.cropper.croppedImage!=null" class="thumbnail">
+                            <img ng-src="{{$ctrl.bookDetails.image}}" />
+                        </div>
+                    </div>
+                </div>
 
-    <div class="form-group">
-        <label class="col-md-3 control-label">Image</label>
-        <div class="col-md-9">
-            <media-preview model="$ctrl.bookDetails.image"></media-preview>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-3 col-md-9">
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+            </div>
         </div>
     </div>
 </form>
+<pre>{{$ctrl.cropper|json}}</pre>
 <pre>{{$ctrl.bookDetails|json}}</pre>

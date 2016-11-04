@@ -1,9 +1,14 @@
-<h1>Books</h1>
+<div class="clearfix">
+    <h1>
+    <button class="btn btn-default pull-right" ng-click="$ctrl.setDefaultBookList()">Set default</button>
+        Books
+    </h1>
+</div>
 
 <div class="row">
     <div class="col-md-5">
         <div class="panel panel-default">
-            <div class="panel-body">
+            <div class="panel-body panel-grey">
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="input-group">
@@ -19,11 +24,11 @@
                                         aria-haspopup="true"
                                         aria-expanded="false">
                                     <span class="glyphicon glyphicon-filter"></span>
-                                    {{$ctrl.filter}}
+                                    {{$ctrl.order}}
                                     <span class="caret"></span></button>
-                                <ul class="dropdown-menu" role="menu" ng-model="$ctrl.filter">
-                                    <li><a href="" ng-click="$ctrl.filter = 'title'">title</a></li>
-                                    <li><a href="" ng-click="$ctrl.filter = 'year'">year</a></li>
+                                <ul class="dropdown-menu" role="menu" ng-model="$ctrl.order">
+                                    <li><a href="" ng-click="$ctrl.order = 'title'">title</a></li>
+                                    <li><a href="" ng-click="$ctrl.order = 'year'">year</a></li>
                                 </ul>
                             </div><!-- /btn-group -->
                         </div><!-- /input-group -->
@@ -42,13 +47,14 @@
             <div class="list-group">
                 <a class="list-group-item"
                    href=""
-                   ng-repeat="book in $ctrl.bookList | filter:search"
-                   ng-click="$ctrl.activeBook = book">
+                   ng-repeat="book in $ctrl.bookList | orderBy:$ctrl.order | filter:search"
+                   ng-class="{'active':book.isbn == $ctrl.activeBook.isbn}"
+                   ng-click="$ctrl.setActiveBook(book)">
                     <span class="glyphicon glyphicon-chevron-right pull-right"></span>
                     <h4 class="list-group-item-heading">{{book.title}}</h4>
                     <p class="list-group-item-text">
-                        by <strong>{{book.authorData[0].firstName}} {{book.authorData[0].lastName}}</strong>,
-                        {{book.publicationYear}}
+                        by {{book.authors[0].firstName}} {{book.authors[0].lastName}},
+                        {{book.year}}
                     </p>
                 </a>
             </div>
@@ -58,10 +64,13 @@
         <div class="well well-lg text-center" ng-if="!$ctrl.activeBook">
             Please, select the book
         </div>
-        <c-book-details
-                ng-if="$ctrl.activeBook"
-                details="$ctrl.activeBook"></c-book-details>
-        <hr>
+        <c-book-details ng-if="$ctrl.activeBook && !$ctrl.startEdit"
+                        start-edit="$ctrl.startEdit"
+                        book-details="$ctrl.activeBook"></c-book-details>
+
+        <c-book-form ng-if="$ctrl.activeBook && $ctrl.startEdit"
+                     start-edit="$ctrl.startEdit"
+                     book-details="$ctrl.activeBook"></c-book-form>
 
     </div>
 </div>

@@ -3,31 +3,26 @@ import template from './book-form.html';
 class BookFormController {
     constructor(isbnService) {
         this.isbnService = isbnService;
-        if (this.details) {
-            this.bookDetails = this.details;
-        } else {
-            this.bookDetails = {
-                title: '',
-                authorData: [
-                    {
-                        firstName: '',
-                        lastName: ''
-                    }
-                ],
-                pageCount: 100,
-                isbn: ''
-            };
-        }
+        this.cropper = {
+            sourceImage: null,
+            croppedImage: null
+        };
+        this.bounds = {
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0
+        };
     }
 
-    addRow(authorData) {
-        authorData.push({
+    addRow(authors) {
+        authors.push({
             firstName: '',
             lastName: ''
         });
     }
-    removeRow(authorData, index) {
-        authorData.splice(index, 1);
+    removeRow(authors, index) {
+        authors.splice(index, 1);
     }
 
     check(isbnSource) {
@@ -38,12 +33,17 @@ class BookFormController {
         console.log(isbn10a.isIsbn13());
     }
 
+    cancel() {
+        console.log(this.bookDetails);
+    }
+
 }
 
 export const bookFormComponent = {
     template,
     bindings: {
-        details: '=?'
+        bookDetails: '=',
+        startEdit: '='
     },
     controller: BookFormController
 };
