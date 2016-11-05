@@ -1,7 +1,7 @@
 import template from './book-details.html';
 
 class BookDetailsController {
-    constructor($scope) {
+    constructor() {
     }
 
     authorsToString(authors) {

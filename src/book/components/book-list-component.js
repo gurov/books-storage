@@ -37,21 +37,23 @@ class BookListController {
         return this.bookService.setDefault();
     }
 
-    save() {
+    save(form) {
+        if (!form.$valid) {
+            return;
+        }
         let n = this.bookList.filter((book) => {
-            return book.isbn === this.activeBook.isbn
+            return book.isbn === this.activeBook.isbn;
         }).length;
         if (n === 0) {
-            console.log('new');
             this.bookList.push(this.activeBook);
         }
-        return this.bookService.save().then(() => {
+        this.bookService.save().then(() => {
             this.startEdit = false;
         });
     }
 
     cancel() {
-        return this.update().then((response) => {
+        return this.update().then(() => {
             this.startEdit = false;
         });
     }

@@ -11,7 +11,6 @@ import 'angular-strap';
 import 'angularjs-datepicker';
 import 'angular-strap/dist/angular-strap.tpl';
 import 'angular-img-cropper';
-import 'isbn';
 import 'lodash';
 
 import {book} from './book/book';

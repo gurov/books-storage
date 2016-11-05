@@ -10,22 +10,23 @@ class BookFormController {
         };
     }
 
+    isIsbn(text) {
+        return this.isbnService.isIsbn(text) || text === '';
+    }
+
     addRow(authors) {
         authors.push({
             firstName: '',
             lastName: ''
         });
     }
+
     removeRow(authors, index) {
         authors.splice(index, 1);
     }
 
-    check(isbnSource) {
-        console.log(ISBN);
-        console.log('9784873113685');
-        var isbn10a = ISBN.parse(isbnSource);
-        console.log(isbn10a.isIsbn10());
-        console.log(isbn10a.isIsbn13());
+    check(text) {
+        return text;
     }
 
 }
