@@ -1,7 +1,9 @@
 import template from './book-details.html';
 
 class BookDetailsController {
-    constructor() {
+    constructor(isbnService) {
+        this.isIsbn = isbnService.isIsbn;
+        this.getAmazonImgUrl = isbnService.getAmazonImgUrl;
     }
 
     authorsToString(authors) {

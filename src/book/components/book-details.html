@@ -4,8 +4,8 @@
             <img ng-src="{{$ctrl.bookDetails.image}}"
                  alt="{{$ctrl.bookDetails.title}}">
         </div>
-        <div class="thumbnail" ng-if="!$ctrl.bookDetails.image">
-            <img src="http://images.amazon.com/images/P/059035342X.01.20TRZZZZ.jpg"
+        <div class="thumbnail" ng-if="!$ctrl.bookDetails.image && $ctrl.isIsbn($ctrl.bookDetails.isbn)">
+            <img ng-src="{{$ctrl.getAmazonImgUrl($ctrl.bookDetails.isbn)}}"
                  alt="{{$ctrl.bookDetails.title}}">
             <div class="small text-center">Image from <a href="https://amazon.com">amazon.com</a></div>
         </div>

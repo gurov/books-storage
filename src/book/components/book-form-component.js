@@ -4,14 +4,11 @@ class BookFormController {
     constructor(isbnService, bookService) {
         this.isbnService = isbnService;
         this.bookService = bookService;
+        this.isIsbn = this.isbnService.isIsbn;
         this.cropper = {
             sourceImage: null,
             croppedImage: null
         };
-    }
-
-    isIsbn(text) {
-        return this.isbnService.isIsbn(text) || text === '';
     }
 
     addRow(authors) {
