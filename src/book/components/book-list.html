@@ -28,10 +28,10 @@
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu" role="menu" ng-model="$ctrl.order">
                                     <li>
-                                        <a href="" ng-click="$ctrl.setOrder('title');$ctrl.order = 'title'">Title</a>
+                                        <a href="" ng-click="$ctrl.setOrder('title')">Title</a>
                                     </li>
                                     <li>
-                                        <a href="" ng-click="$ctrl.setOrder('year');$ctrl.order = 'year'">Year</a>
+                                        <a href="" ng-click="$ctrl.setOrder('year')">Year</a>
                                     </li>
                                 </ul>
                             </div><!-- /btn-group -->
@@ -40,8 +40,7 @@
                     <div class="col-xs-4">
                         <a class="btn btn-primary btn-block"
                            href=""
-                           data-toggle="modal"
-                           data-target="#editModal">
+                           ng-click="$ctrl.newBook()">
                             <span class="glyphicon glyphicon-plus"></span>
                             Add
                         </a>
@@ -54,7 +53,7 @@
                    ng-repeat="book in $ctrl.bookList | orderBy:$ctrl.order | filter:search"
                    ng-class="{'active':book.isbn == $ctrl.activeBook.isbn}"
                    ng-click="$ctrl.activeBook = book">
-                    <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+                    <span class="glyphicon glyphicon-chevron-right pull-right arrow-middle"></span>
                     <h4 class="list-group-item-heading">{{book.title}}</h4>
                     <p class="list-group-item-text">
                         by {{book.authors[0].firstName}} {{book.authors[0].lastName}},
@@ -86,19 +85,20 @@
         </div>
 
         <div class="panel panel-default" ng-if="$ctrl.activeBook && $ctrl.startEdit">
-            <form>
+            <form ng-submit="$ctrl.save()">
             <div class="panel-body panel-grey">
                 <div class="row">
                     <div class="col-xs-6">
                         <p class="form-control-static">Edit</p>
                     </div>
                     <div class="col-xs-6 text-right">
-                        <a class="btn btn-default"
-                           ng-click="$ctrl.cancel();$ctrl.startEdit = false"
-                           href="">Cancel</a>
-                        <a class="btn btn-primary"
-                           ng-click="$ctrl.save();$ctrl.startEdit = false"
-                           href=""><span class="glyphicon glyphicon-save"></span> Save</a>
+                        <button type="button"
+                                class="btn btn-default"
+                                ng-click="$ctrl.cancel()">Cancel</button>
+                        <button type="submit"
+                                class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span> Save
+                        </button>
                     </div>
                 </div>
             </div>

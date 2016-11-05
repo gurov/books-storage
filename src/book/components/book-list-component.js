@@ -17,6 +17,11 @@ class BookListController {
         this.update();
     }
 
+    newBook() {
+        this.activeBook = this.bookService.getPattern();
+        this.startEdit = true;
+    }
+
     setOrder(order) {
         this.order = order;
         this.localForage.setItem('bookOrderBy', order);
@@ -33,6 +38,13 @@ class BookListController {
     }
 
     save() {
+        let n = this.bookList.filter((book) => {
+            return book.isbn === this.activeBook.isbn
+        }).length;
+        if (n === 0) {
+            console.log('new');
+            this.bookList.push(this.activeBook);
+        }
         return this.bookService.save().then(() => {
             this.startEdit = false;
         });

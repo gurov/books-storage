@@ -9,6 +9,9 @@
 .capitalize {
     text-transform: capitalize;
 }
+.arrow-middle {
+    top: 15px;
+}
 
 .table-condensed.book-options > thead > tr > th,
 .table-condensed.book-options > tbody > tr > td {
