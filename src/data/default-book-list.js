@@ -1,5 +1,6 @@
 export const defaultBookList = [
     {
+        key: '1',
         title: 'Harry Potter and the stone',
         authors: [
             {
@@ -19,6 +20,7 @@ export const defaultBookList = [
         image: null
     },
     {
+        key: '2',
         title: 'Principles of solid mechanics',
         authors: [
             {

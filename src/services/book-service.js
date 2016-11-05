@@ -8,13 +8,12 @@ export class BookService {
 
     getPattern() {
         return {
+            key: Math.random().toString(),
             title: '',
-            authors: [
-                {
-                    firstName: '',
-                    lastName: ''
-                }
-            ],
+            authors: [{
+                firstName: '',
+                lastName: ''
+            }],
             pageCount: 1,
             publisherName: '',
             year: 2000,

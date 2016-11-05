@@ -4,11 +4,6 @@
            ng-model="$ctrl.bookDetails.isbn"
            ng-model-options="{debounce:300}"
            class="form-control">
-    <div class="help-block" ng-show="$ctrl.isIsbn($ctrl.bookDetails.isbn)">
-        Load data from <strong>isbndb.com</strong>:
-        <a href="" class="btn btn-default btn-xs"
-                ng-click="$ctrl.check($ctrl.bookDetails.isbn)">load</a>
-    </div>
 </div>
 <div class="form-group">
     <label>Title *</label>

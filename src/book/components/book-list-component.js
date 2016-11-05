@@ -55,6 +55,7 @@ class BookListController {
     cancel() {
         return this.update().then(() => {
             this.startEdit = false;
+            this.activeBook = null;
         });
     }
 

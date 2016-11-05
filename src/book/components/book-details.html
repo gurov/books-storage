@@ -6,8 +6,7 @@
         </div>
         <div class="thumbnail" ng-if="!$ctrl.bookDetails.image && $ctrl.isIsbn($ctrl.bookDetails.isbn)">
             <img ng-src="{{$ctrl.getAmazonImgUrl($ctrl.bookDetails.isbn)}}"
-                 alt="{{$ctrl.bookDetails.title}}">
-            <div class="small text-center">Image from <a href="https://amazon.com">amazon.com</a></div>
+                 alt="{{$ctrl.bookDetails.title}} (Image from Amazon)">
         </div>
     </div>
     <div class="col-xs-8">
