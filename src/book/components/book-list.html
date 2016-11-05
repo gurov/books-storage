@@ -24,11 +24,15 @@
                                         aria-haspopup="true"
                                         aria-expanded="false">
                                     <span class="glyphicon glyphicon-filter"></span>
-                                    {{$ctrl.order}}
+                                    <span class="capitalize">{{$ctrl.order}}</span>
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu" role="menu" ng-model="$ctrl.order">
-                                    <li><a href="" ng-click="$ctrl.order = 'title'">title</a></li>
-                                    <li><a href="" ng-click="$ctrl.order = 'year'">year</a></li>
+                                    <li>
+                                        <a href="" ng-click="$ctrl.setOrder('title');$ctrl.order = 'title'">Title</a>
+                                    </li>
+                                    <li>
+                                        <a href="" ng-click="$ctrl.setOrder('year');$ctrl.order = 'year'">Year</a>
+                                    </li>
                                 </ul>
                             </div><!-- /btn-group -->
                         </div><!-- /input-group -->
@@ -49,7 +53,7 @@
                    href=""
                    ng-repeat="book in $ctrl.bookList | orderBy:$ctrl.order | filter:search"
                    ng-class="{'active':book.isbn == $ctrl.activeBook.isbn}"
-                   ng-click="$ctrl.setActiveBook(book)">
+                   ng-click="$ctrl.activeBook = book">
                     <span class="glyphicon glyphicon-chevron-right pull-right"></span>
                     <h4 class="list-group-item-heading">{{book.title}}</h4>
                     <p class="list-group-item-text">
@@ -64,13 +68,45 @@
         <div class="well well-lg text-center" ng-if="!$ctrl.activeBook">
             Please, select the book
         </div>
-        <c-book-details ng-if="$ctrl.activeBook && !$ctrl.startEdit"
-                        start-edit="$ctrl.startEdit"
-                        book-details="$ctrl.activeBook"></c-book-details>
 
-        <c-book-form ng-if="$ctrl.activeBook && $ctrl.startEdit"
-                     start-edit="$ctrl.startEdit"
-                     book-details="$ctrl.activeBook"></c-book-form>
+        <div class="panel panel-default" ng-if="$ctrl.activeBook && !$ctrl.startEdit" >
+            <div class="panel-body  panel-grey clearfix">
+                <p class="form-control-static pull-left">
+                    Book details
+                </p>
+                <button class="btn btn-primary pull-right"
+                        ng-click="$ctrl.startEdit = true">
+                    <span class="glyphicon glyphicon-edit"></span>
+                    Edit
+                </button>
+            </div>
+            <div class="panel-body">
+                <c-book-details book-details="$ctrl.activeBook"></c-book-details>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-if="$ctrl.activeBook && $ctrl.startEdit">
+            <form>
+            <div class="panel-body panel-grey">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p class="form-control-static">Edit</p>
+                    </div>
+                    <div class="col-xs-6 text-right">
+                        <a class="btn btn-default"
+                           ng-click="$ctrl.cancel();$ctrl.startEdit = false"
+                           href="">Cancel</a>
+                        <a class="btn btn-primary"
+                           ng-click="$ctrl.save();$ctrl.startEdit = false"
+                           href=""><span class="glyphicon glyphicon-save"></span> Save</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <c-book-form book-details="$ctrl.activeBook"></c-book-form>
+            </div>
+            </form>
+        </div>
 
     </div>
 </div>

@@ -14,8 +14,7 @@ class BookDetailsController {
 export const bookDetailsComponent = {
     template,
     bindings: {
-        bookDetails: '=',
-        startEdit: '='
+        bookDetails: '='
     },
     controller: BookDetailsController
 };

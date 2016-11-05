@@ -6,10 +6,12 @@ import {bookEditComponent} from './components/book-edit-component';
 import {bookAddComponent} from './components/book-add-component';
 import {bookFormComponent} from './components/book-form-component';
 import {IsbnService} from './../services/isbn-service';
+import {BookService} from './../services/book-service';
 /**
  * @namespace book */
 export const book = angular.module('book', ['ui.router'])
     .service('isbnService', IsbnService)
+    .service('bookService', BookService)
     .component('cBookList', bookListComponent)
     .component('cBookDetails', bookDetailsComponent)
     .component('cBookEdit', bookEditComponent)

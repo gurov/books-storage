@@ -1,17 +1,12 @@
 import template from './book-form.html';
 
 class BookFormController {
-    constructor(isbnService) {
+    constructor(isbnService, bookService) {
         this.isbnService = isbnService;
+        this.bookService = bookService;
         this.cropper = {
             sourceImage: null,
             croppedImage: null
-        };
-        this.bounds = {
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0
         };
     }
 
@@ -33,17 +28,12 @@ class BookFormController {
         console.log(isbn10a.isIsbn13());
     }
 
-    cancel() {
-        console.log(this.bookDetails);
-    }
-
 }
 
 export const bookFormComponent = {
     template,
     bindings: {
-        bookDetails: '=',
-        startEdit: '='
+        bookDetails: '='
     },
     controller: BookFormController
 };

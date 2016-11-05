@@ -6,8 +6,8 @@
     width: 40%;
 }
 
-.container {
-    max-width: 960px;
+.capitalize {
+    text-transform: capitalize;
 }
 
 .table-condensed.book-options > thead > tr > th,

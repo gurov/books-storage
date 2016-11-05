@@ -1,139 +1,121 @@
-<form>
-    <div class="panel panel-default">
-        <div class="panel-body panel-grey">
-            <div class="row">
-                <div class="col-xs-6">
-                    Edit
-                </div>
-                <div class="col-xs-6 text-right">
-                    <a class="btn btn-default"
-                       ng-click="$ctrl.cancel()"
-                       href="">Cancel</a>
-                    <a class="btn btn-primary"
-                       href=""><span class="glyphicon glyphicon-save"></span> Save</a>
-                </div>
-            </div>
-        </div>
-        <div class="panel-body">
-            <div class="form-group">
-                <label>ISBN</label>
+<div class="form-group">
+    <label>ISBN</label>
+    <input type="text"
+           ng-model="$ctrl.bookDetails.isbn"
+           ng-model-options="{debounce:300}"
+           ng-class="{'ng-invalid':1}"
+           class="form-control">
+    <div class="help-block">
+        Load data from <strong>isbndb.com</strong>:
+        <button class="btn btn-default btn-xs"
+                ng-click="$ctrl.check($ctrl.bookDetails.isbn)">load</button>
+    </div>
+</div>
+<div class="form-group">
+    <label>Title *</label>
+    <input type="text"
+           ng-model="$ctrl.bookDetails.title"
+           required
+           ng-maxlength="30"
+           class="form-control">
+</div>
+<div class="form-group">
+    <label>Authors *</label>
+    <table class="table table-condensed authors">
+        <thead>
+        <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="author in $ctrl.bookDetails.authors">
+            <td>
                 <input type="text"
-                       ng-model="$ctrl.bookDetails.isbn"
-                       ng-model-options="{debounce:300}"
-                       ng-class="{'ng-invalid':1}"
-                       class="form-control">
-                <div class="help-block">
-                    Load data from <strong>isbndb.com</strong>:
-                    <button class="btn btn-default btn-xs"
-                            ng-click="$ctrl.check($ctrl.bookDetails.isbn)">load</button>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Title *</label>
-                <input type="text"
-                       ng-model="$ctrl.bookDetails.title"
                        required
-                       ng-maxlength="30"
+                       ng-maxlength="20"
+                       ng-model="author.firstName"
                        class="form-control">
-            </div>
-            <div class="form-group">
-                <label>Authors *</label>
-                <table class="table table-condensed authors">
-                    <thead>
-                    <tr>
-                        <th>First name</th>
-                        <th>Last name</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="author in $ctrl.bookDetails.authors">
-                        <td>
-                            <input type="text"
-                                   required
-                                   ng-maxlength="20"
-                                   ng-model="author.firstName"
-                                   class="form-control">
-                        </td>
-                        <td>
-                            <input type="text"
-                                   ng-model="author.lastName"
-                                   ng-maxlength="20"
-                                   required
-                                   class="form-control">
-                        </td>
-                        <td>
-                            <span class="glyphicon glyphicon-remove cursor-pointer"
-                                  ng-if="$ctrl.bookDetails.authors.length > 1"
-                                  ng-click="$ctrl.removeRow($ctrl.bookDetails.authors, $index)"
-                                  title="Remove"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <button class="btn btn-default btn-xs"
-                                    ng-click="$ctrl.addRow($ctrl.bookDetails.authors)">
-                                <span class="glyphicon glyphicon-plus"></span>
-                                Add author
-                            </button>
-                        </td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="row">
-                <div class="col-xs-6">
-                    <div class="form-group">
-                        <label>Number of pages *</label>
-                        <input type="number"
-                               required
-                               ng-model="$ctrl.bookDetails.pageCount"
-                               ng-min="1"
-                               ng-max="10001"
-                               class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Publication year</label>
-                        <input type="number"
-                               ng-model="$ctrl.bookDetails.year"
-                               ng-min="1800"
-                               class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Print date</label>
-                        <datepicker date-format="yyyy-MM-dd">
-                            <input ng-model="$ctrl.bookDetails.printDate"
-                                   class="form-control"
-                                   type="text"/>
-                        </datepicker>
-                    </div>
-                </div>
-                <div class="col-xs-6"></div>
-            </div>
-            <div class="form-group">
-                <label>Image</label>
-                <input type="file" img-cropper-fileread image="$ctrl.cropper.sourceImage" />
-                <canvas image-cropper
-                        image="$ctrl.cropper.sourceImage"
-                        cropped-image="$ctrl.bookDetails.image"
-                        crop-width="70"
-                        crop-height="100"
-                        keep-aspect="true"
-                        touch-radius="30"></canvas>
-                <div class="row">
-                    <div class="col-xs-3">
-                        <div ng-show="$ctrl.cropper.croppedImage!=null" class="thumbnail">
-                            <img ng-src="{{$ctrl.bookDetails.image}}" />
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
+            </td>
+            <td>
+                <input type="text"
+                       ng-model="author.lastName"
+                       ng-maxlength="20"
+                       required
+                       class="form-control">
+            </td>
+            <td>
+                <span class="glyphicon glyphicon-remove cursor-pointer"
+                      ng-if="$ctrl.bookDetails.authors.length > 1"
+                      ng-click="$ctrl.removeRow($ctrl.bookDetails.authors, $index)"
+                      title="Remove"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button class="btn btn-default btn-xs"
+                        ng-click="$ctrl.addRow($ctrl.bookDetails.authors)">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Add author
+                </button>
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <div class="form-group">
+            <label>Number of pages *</label>
+            <input type="number"
+                   required
+                   ng-model="$ctrl.bookDetails.pageCount"
+                   ng-min="1"
+                   ng-max="10001"
+                   class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Publication year</label>
+            <input type="number"
+                   ng-model="$ctrl.bookDetails.year"
+                   ng-min="1800"
+                   class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Print date</label>
+            <datepicker date-format="yyyy-MM-dd">
+                <input ng-model="$ctrl.bookDetails.printDate"
+                       class="form-control"
+                       type="text"/>
+            </datepicker>
         </div>
     </div>
-</form>
-<pre>{{$ctrl.cropper|json}}</pre>
-<pre>{{$ctrl.bookDetails|json}}</pre>
+    <div class="col-xs-6"></div>
+</div>
+<div class="form-group">
+    <label>Image</label>
+    <div class="row">
+        <div class="col-xs-3">
+            <div ng-show="$ctrl.bookDetails.image!=null" class="thumbnail">
+                <img ng-src="{{$ctrl.bookDetails.image}}" />
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <canvas image-cropper
+                    class="hidden"
+                    image="$ctrl.cropper.sourceImage"
+                    cropped-image="$ctrl.bookDetails.image"
+                    crop-width="170"
+                    crop-height="250"
+                    keep-aspect="true"
+                    touch-radius="30"></canvas>
+        </div>
+    </div>
+    <input type="file"
+           img-cropper-fileread
+           image="$ctrl.cropper.sourceImage" />
+
+</div>

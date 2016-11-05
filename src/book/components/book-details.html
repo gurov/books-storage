@@ -1,70 +1,57 @@
-<div class="panel panel-default">
-
-    <div class="panel-body  panel-grey clearfix">
-        <h3 class="panel-title pull-left">
-            Book details
-        </h3>
-        <button class="btn btn-primary pull-right"
-                ng-click="$ctrl.startEdit = true">
-            <span class="glyphicon glyphicon-edit"></span>
-            Edit
-        </button>
-    </div>
-
-    <div class="panel-body">
-
-        <div class="row">
-            <div class="col-xs-3">
-                <div class="thumbnail">
-                    <img src="http://images.amazon.com/images/P/059035342X.01.20TRZZZZ.jpg"
-                         alt="{{$ctrl.bookDetails.title}}">
-                    <div class="small text-center">Image from <a href="https://amazon.com">amazon.com</a></div>
-                </div>
-            </div>
-            <div class="col-xs-9">
-
-                <div ng-if="$ctrl.bookDetails">
-                    <h3 class="details-header">
-                        <strong>{{$ctrl.bookDetails.title}}</strong>
-                    </h3>
-                    <h6>
-                        by <strong>{{$ctrl.authorsToString($ctrl.bookDetails.authors)}}</strong>
-                    </h6>
-
-                    <table class="table table-condensed book-options">
-                        <thead>
-                        <tr>
-                            <th class="width40">Options</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>ISBN</td>
-                            <td>{{$ctrl.bookDetails.isbn}}</td>
-                        </tr>
-                        <tr>
-                            <td>Publisher name</td>
-                            <td>{{$ctrl.bookDetails.publisherName}}</td>
-                        </tr>
-                        <tr>
-                            <td>Number of pages</td>
-                            <td>{{$ctrl.bookDetails.pageCount}}</td>
-                        </tr>
-                        <tr>
-                            <td>Publication year</td>
-                            <td>{{$ctrl.bookDetails.year}}</td>
-                        </tr>
-                        <tr>
-                            <td>Print date</td>
-                            <td>{{$ctrl.bookDetails.printDate}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div ng-if="!$ctrl.bookDetails"><img src="/src/images/loader.gif"></div>
-            </div>
+<div class="row">
+    <div class="col-xs-4">
+        <div class="thumbnail" ng-if="$ctrl.bookDetails.image">
+            <img ng-src="{{$ctrl.bookDetails.image}}"
+                 alt="{{$ctrl.bookDetails.title}}">
         </div>
+        <div class="thumbnail" ng-if="!$ctrl.bookDetails.image">
+            <img src="http://images.amazon.com/images/P/059035342X.01.20TRZZZZ.jpg"
+                 alt="{{$ctrl.bookDetails.title}}">
+            <div class="small text-center">Image from <a href="https://amazon.com">amazon.com</a></div>
+        </div>
+    </div>
+    <div class="col-xs-8">
+
+        <div ng-if="$ctrl.bookDetails">
+            <h3 class="details-header">
+                <strong>{{$ctrl.bookDetails.title}}</strong>
+            </h3>
+            <h6>
+                by <strong>{{$ctrl.authorsToString($ctrl.bookDetails.authors)}}</strong>
+            </h6>
+
+            <table class="table table-condensed book-options">
+                <thead>
+                <tr>
+                    <th class="width40">Options</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ISBN</td>
+                    <td>{{$ctrl.bookDetails.isbn}}</td>
+                </tr>
+                <tr>
+                    <td>Publisher name</td>
+                    <td>{{$ctrl.bookDetails.publisherName}}</td>
+                </tr>
+                <tr>
+                    <td>Number of pages</td>
+                    <td>{{$ctrl.bookDetails.pageCount}}</td>
+                </tr>
+                <tr>
+                    <td>Publication year</td>
+                    <td>{{$ctrl.bookDetails.year}}</td>
+                </tr>
+                <tr>
+                    <td>Print date</td>
+                    <td>{{$ctrl.bookDetails.printDate}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-if="!$ctrl.bookDetails"><img src="/src/images/loader.gif"></div>
     </div>
 </div>
 
