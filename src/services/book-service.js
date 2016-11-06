@@ -26,7 +26,7 @@ export class BookService {
     get() {
         return this.localForage.getItem('bookList').then((response) => {
             this.list = response;
-            return response;
+            return response || [];
         });
     }
 

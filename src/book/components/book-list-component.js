@@ -43,6 +43,8 @@ class BookListController {
         if (!form.$valid || !this.isbnService.isIsbn(this.activeBook.isbn)) {
             return;
         }
+
+        console.log(this.bookList);
         let n = this.bookList.filter((book) => {
             return book.key === this.activeBook.key;
         }).length;

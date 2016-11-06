@@ -4,7 +4,7 @@
             <img ng-src="{{$ctrl.bookDetails.image}}"
                  alt="{{$ctrl.bookDetails.title}}">
         </div>
-        <div class="thumbnail" ng-if="!$ctrl.bookDetails.image && $ctrl.isIsbn($ctrl.bookDetails.isbn)">
+        <div class="thumbnail" ng-if="!$ctrl.bookDetails.image && $ctrl.bookDetails.isbn && $ctrl.isIsbn($ctrl.bookDetails.isbn)">
             <img ng-src="{{$ctrl.getAmazonImgUrl($ctrl.bookDetails.isbn)}}"
                  alt="{{$ctrl.bookDetails.title}} (Image from Amazon)">
         </div>
