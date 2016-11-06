@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html>
+<html dir="">
 <head>
     <title>Button and field</title>
 
@@ -53,7 +53,7 @@
         float: left;
     }
 
-    .form-wrapper[dir="rtl"] input {
+    .form-wrapper input [dir="rtl"]{
         float: right;
     }
 
@@ -80,14 +80,13 @@
         background: -webkit-linear-gradient(top,  #ffffff 0%,#cfcfcf 100%); /* Chrome10-25,Safari5.1-6 */
         background: linear-gradient(to bottom,  #ffffff 0%,#cfcfcf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cfcfcf',GradientType=0 ); /* IE6-9 */
-    }
-
-    .form-wrapper[dir="ltr"] button {
         right: 0;
     }
 
     .form-wrapper[dir="rtl"] button {
         left: 0;
+        right: auto;
+        border: 2px solid red;
     }
 
     .form-wrapper button::-moz-focus-inner {
@@ -111,17 +110,17 @@
 </style>
 <body>
 
-    <div id="searchbar">
-        <form class="form-wrapper">
-            <div class="input-wrapper">
-                <input type="text"/>
-            </div>
-            <button type="submit">Send code</button>
-        </form>
-        <div class="help-block">
-            Example: 72A22EF8-8766-4359-3978-EBBAC445687A
+<div id="searchbar">
+    <form class="form-wrapper">
+        <div class="input-wrapper">
+            <input type="text"/>
         </div>
+        <button type="submit">Send code</button>
+    </form>
+    <div class="help-block">
+        Example: 72A22EF8-8766-4359-3978-EBBAC445687A
     </div>
+</div>
 
 
 </body>
