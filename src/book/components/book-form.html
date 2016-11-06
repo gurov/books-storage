@@ -5,39 +5,49 @@
            ng-model-options="{debounce:300}"
            class="form-control">
 </div>
-<div class="form-group">
+<div class="form-group" ui-validation-show-errors>
     <label>Title *</label>
     <input type="text"
            ng-model="$ctrl.bookDetails.title"
+           name="title"
            required
            ng-maxlength="30"
            class="form-control">
+    <ui-validation-error-messages>
 </div>
-<div class="form-group">
-    <label>Authors *</label>
+<div>
+    <label>Authors</label>
     <table class="table table-condensed authors">
         <thead>
         <tr>
-            <th>First name</th>
-            <th>Last name</th>
+            <th>First name *</th>
+            <th>Last name *</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="author in $ctrl.bookDetails.authors">
             <td>
-                <input type="text"
-                       required
-                       ng-maxlength="20"
-                       ng-model="author.firstName"
-                       class="form-control">
+                <div class="form-group" ui-validation-show-errors>
+                    <input type="text"
+                           required
+                           ng-maxlength="20"
+                           ng-model="author.firstName"
+                           name="firstName"
+                           class="form-control">
+                    <ui-validation-error-messages>
+                </div>
             </td>
             <td>
-                <input type="text"
-                       ng-model="author.lastName"
-                       ng-maxlength="20"
-                       required
-                       class="form-control">
+                <div class="form-group" ui-validation-show-errors>
+                    <input type="text"
+                           required
+                           ng-model="author.lastName"
+                           ng-maxlength="20"
+                           name="lastName"
+                           class="form-control">
+                    <ui-validation-error-messages>
+                </div>
             </td>
             <td>
                 <span class="glyphicon glyphicon-remove cursor-pointer"
@@ -62,29 +72,35 @@
 </div>
 <div class="row">
     <div class="col-xs-6">
-        <div class="form-group">
+        <div class="form-group" ui-validation-show-errors>
             <label>Number of pages *</label>
             <input type="number"
                    required
                    ng-model="$ctrl.bookDetails.pageCount"
+                   name="pageCount"
                    ng-min="1"
-                   ng-max="10001"
+                   ng-max="10000"
                    class="form-control">
+            <ui-validation-error-messages>
         </div>
-        <div class="form-group">
+        <div class="form-group" ui-validation-show-errors>
             <label>Publication year</label>
             <input type="number"
                    ng-model="$ctrl.bookDetails.year"
+                   name="year"
                    ng-min="1800"
                    class="form-control">
+            <ui-validation-error-messages>
         </div>
-        <div class="form-group">
+        <div class="form-group" ui-validation-show-errors>
             <label>Print date</label>
             <datepicker date-format="yyyy-MM-dd">
                 <input ng-model="$ctrl.bookDetails.printDate"
+                       name="printDate"
                        class="form-control"
                        type="text"/>
             </datepicker>
+            <ui-validation-error-messages>
         </div>
     </div>
     <div class="col-xs-6"></div>

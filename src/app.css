@@ -19,14 +19,9 @@
 }
 
 .table.authors > thead > tr > th,
-.table.authors > tbody > tr > th,
-.table.authors > tfoot > tr > th,
-.table.authors > thead > tr > td,
-.table.authors > tbody > tr > td,
-.table.authors > tfoot > tr > td {
+.table.authors > tbody > tr > td {
     border: none;
     padding-left: 0;
-    vertical-align: middle;
     margin-bottom: 0;
 }
 

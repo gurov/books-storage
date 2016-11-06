@@ -8,17 +8,16 @@
   "version": "0.0.1",
   "dependencies": {
     "angular": "~1.5.0",
+    "angular-bootstrap-form-validation": "^0.9.7",
     "angular-img-cropper": "0.0.2",
     "angular-localforage": "^1.2.5",
     "angular-media-preview": "^0.1.1",
     "angular-strap": "^2.3.10",
-    "angular-ui-form-validation": "^2.1.2",
     "angular-ui-router": "^0.2.18",
     "angularjs-datepicker": "^2.1.6",
     "bootstrap": "^3.3.7",
     "isbn": "^0.4.0",
-    "jquery": "^1.12.4",
-    "lodash": "^3.10.1"
+    "jquery": "^1.12.4"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",

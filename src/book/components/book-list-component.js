@@ -38,7 +38,7 @@ class BookListController {
     }
 
     save(form) {
-        if (!form.$valid) {
+        if (!form.$valid || !this.isbnService.isIsbn(this.activeBook.isbn)) {
             return;
         }
         let n = this.bookList.filter((book) => {

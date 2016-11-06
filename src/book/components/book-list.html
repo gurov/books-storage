@@ -86,7 +86,9 @@
         </div>
 
         <div class="panel panel-default" ng-if="$ctrl.activeBook && $ctrl.startEdit">
-            <form name="editForm" ng-submit="$ctrl.save(editForm)" novalidate>
+            <form name="editForm"
+                  novalidate
+                  ui-validation-submit="$ctrl.save(editForm)">
             <div class="panel-body panel-grey">
                 <div class="row">
                     <div class="col-xs-6">

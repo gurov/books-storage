@@ -11,7 +11,7 @@ import 'angular-strap';
 import 'angularjs-datepicker';
 import 'angular-strap/dist/angular-strap.tpl';
 import 'angular-img-cropper';
-import 'lodash';
+import 'angular-bootstrap-form-validation';
 
 import {book} from './book/book';
 
@@ -19,6 +19,7 @@ angular.module('app', [
     'ui.router',
     'LocalForageModule',
     'mgcrea.ngStrap',
+    'ui.bootstrap.validation',
     'angular-img-cropper',
     '720kb.datepicker',
     book.name
