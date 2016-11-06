@@ -23,13 +23,9 @@
 
 <script>
     angular.module('app')
-        .constant('testConst', 'testConsttestConst!!')
         .config(function ($urlRouterProvider, $compileProvider) {
             $urlRouterProvider.otherwise('/book/list');
             $compileProvider.debugInfoEnabled(true);
-        })
-        .run(function ($rootScope) {
-            $rootScope.cfg = {aa: 'aa'};
         });
 </script>
 
