@@ -1,9 +1,9 @@
 {
-  "name": "angular-template",
-  "description": "Angular template for super projects",
+  "name": "book-storage",
+  "description": "Example angular code",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/gurov/books-storage.git"
   },
   "version": "0.0.1",
   "dependencies": {

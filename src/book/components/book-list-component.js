@@ -34,7 +34,9 @@ class BookListController {
     }
 
     setDefaultBookList() {
-        return this.bookService.setDefault();
+        return this.bookService.setDefault().then(() => {
+            this.update();
+        });
     }
 
     save(form) {
