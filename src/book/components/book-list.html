@@ -52,7 +52,7 @@
                 <a class="list-group-item"
                    href=""
                    ng-repeat="book in $ctrl.bookList | orderBy:$ctrl.order | filter:search"
-                   ng-class="{'active':book.isbn == $ctrl.activeBook.isbn}"
+                   ng-class="{'active':book.key == $ctrl.activeBook.key}"
                    ng-click="$ctrl.activeBook = book">
                     <span class="glyphicon glyphicon-chevron-right pull-right arrow-middle"></span>
                     <h4 class="list-group-item-heading">{{book.title}}</h4>

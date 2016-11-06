@@ -94,7 +94,10 @@
         </div>
         <div class="form-group" ui-validation-show-errors>
             <label>Print date</label>
-            <datepicker date-format="yyyy-MM-dd">
+            <datepicker
+                    date-min-limit="1800-01-01"
+                    date-typer="true"
+                    date-format="yyyy-MM-dd">
                 <input ng-model="$ctrl.bookDetails.printDate"
                        name="printDate"
                        class="form-control"

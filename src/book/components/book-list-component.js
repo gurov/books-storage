@@ -42,7 +42,7 @@ class BookListController {
             return;
         }
         let n = this.bookList.filter((book) => {
-            return book.isbn === this.activeBook.isbn;
+            return book.key === this.activeBook.key;
         }).length;
         if (n === 0) {
             this.bookList.push(this.activeBook);
