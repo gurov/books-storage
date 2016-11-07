@@ -39,12 +39,21 @@ class BookListController {
         });
     }
 
+    remove(book) {
+        let index = this.bookList.indexOf(book);
+        this.bookList.splice(index, 1);
+        this.bookService.save().then(() => {
+            this.startEdit = false;
+            this.activeBook = null;
+            this.update();
+        });
+    }
+
     save(form) {
         if (!form.$valid || !this.isbnService.isIsbn(this.activeBook.isbn)) {
             return;
         }
 
-        console.log(this.bookList);
         let n = this.bookList.filter((book) => {
             return book.key === this.activeBook.key;
         }).length;

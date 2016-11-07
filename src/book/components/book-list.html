@@ -108,6 +108,12 @@
             <div class="panel-body">
                 <c-book-form book-details="$ctrl.activeBook"></c-book-form>
             </div>
+                <div class="panel-footer text-right">
+                    <a href="" class="btn btn-xs" ng-click="$ctrl.remove($ctrl.activeBook)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                        Delete
+                    </a>
+                </div>
             </form>
         </div>
 
