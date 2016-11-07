@@ -15,34 +15,9 @@
         padding: 0;
         border: 0;
     }
-    #searchbar {
-        position: relative;
-        top: 20px;
-        width: 100%;
-        margin: 0;
-    }
 
-    .form-wrapper {
-        position: relative;
-        width: 100%;
+    .field {
         height: 47px;
-    }
-
-    .input-wrapper {
-        position: absolute;
-        top : 0;
-        bottom: 0;
-        right: 159px;
-        left: 0;
-    }
-
-    .input-wrapper[dir='rtl'] {
-        right: 0;
-        left: 159px;
-    }
-
-    .form-wrapper input {
-        height: 100%;
         width: 100%;
         padding: 8px 10px;
         border: 1px solid #757474;
@@ -52,48 +27,11 @@
         box-sizing: border-box;         /* Opera/IE 8+ */
         float: left;
     }
-    .form-wrapper[dir="ltr"] input {
-    }
 
-    .form-wrapper input [dir="rtl"]{
-        float: right;
-    }
-
-    .form-wrapper button {
-        position: absolute;
-        top: 0;
-        overflow: visible;
-        padding: 0;
-        cursor: pointer;
+    .button {
         height: 47px;
         width: 144px;
-        border: 1px solid #b5b5b5;
-        color: #4a525a;
-        text-shadow: 0 1px 1px #ffffff;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        border-radius: 5px;
-        -webkit-box-shadow: 0 1px 1px #ddd;
-        -moz-box-shadow:  0 1px 1px #ddd;
-        box-shadow:  0 1px 1px #ddd;
         font-size: 19px;
-        background: #ffffff; /* Old browsers */
-        background: -moz-linear-gradient(top,  #ffffff 0%, #cfcfcf 100%); /* FF3.6-15 */
-        background: -webkit-linear-gradient(top,  #ffffff 0%,#cfcfcf 100%); /* Chrome10-25,Safari5.1-6 */
-        background: linear-gradient(to bottom,  #ffffff 0%,#cfcfcf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#cfcfcf',GradientType=0 ); /* IE6-9 */
-        right: 0;
-    }
-
-    .form-wrapper[dir="rtl"] button {
-        left: 0;
-        right: auto;
-        border: 2px solid red;
-    }
-
-    .form-wrapper button::-moz-focus-inner {
-        border: 0;
-        padding: 0;
     }
 
     .help-block {
@@ -109,16 +47,38 @@
         text-align: right;
     }
 
+    #one, #two, #center {
+        display: table-cell;
+        vertical-align: top;
+    }
+    #center div{
+        display: block;
+        width: 15px;
+        height: 1px;
+    }
+    #one {
+        left: 0;
+        width: 100%;
+    }
+
 </style>
+
 <body>
 
+
 <div id="searchbar">
-    <form class="form-wrapper">
-        <div class="input-wrapper">
-            <input type="text"/>
+    <br><br><br>
+    <div id="container">
+        <div id="one">
+            <input type="text" class="field">
         </div>
-        <button type="submit">Send code</button>
-    </form>
+        <div id="center">
+            <div></div>
+        </div>
+        <div id="two">
+            <input type="button" class="button" value="Send code">
+        </div>
+    </div>
     <div class="help-block">
         Example: 72A22EF8-8766-4359-3978-EBBAC445687A
     </div>
